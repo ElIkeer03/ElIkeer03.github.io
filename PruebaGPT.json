@@ -1,0 +1,22 @@
+[
+    { "id": 1, "nombre": "Laptop", "precio": 1200, "ventas": 15, "categoria": "Tecnología" },
+    { "id": 2, "nombre": "Mouse", "precio": 25, "ventas": 50, "categoria": "Accesorios" },
+    { "id": 3, "nombre": "Teclado", "precio": 45, "ventas": 35, "categoria": "Accesorios" },
+    { "id": 4, "nombre": "Monitor", "precio": 200, "ventas": 20, "categoria": "Pantallas" },
+    { "id": 5, "nombre": "USB", "precio": 15, "ventas": 100, "categoria": "Almacenamiento" },
+    { "id": 6, "nombre": "Disco Duro Externo", "precio": 80, "ventas": 25, "categoria": "Almacenamiento" },
+    { "id": 7, "nombre": "SSD 1TB", "precio": 95, "ventas": 40, "categoria": "Almacenamiento" },
+    { "id": 8, "nombre": "Tarjeta Gráfica RTX 3060", "precio": 350, "ventas": 10, "categoria": "Componentes" },
+    { "id": 9, "nombre": "Memoria RAM 16GB", "precio": 75, "ventas": 30, "categoria": "Componentes" },
+    { "id": 10, "nombre": "Placa Base MSI", "precio": 150, "ventas": 12, "categoria": "Componentes" },
+    { "id": 11, "nombre": "Fuente de Poder 650W", "precio": 65, "ventas": 18, "categoria": "Componentes" },
+    { "id": 12, "nombre": "Gabinete Gaming", "precio": 90, "ventas": 14, "categoria": "Componentes" },
+    { "id": 13, "nombre": "Webcam HD", "precio": 35, "ventas": 28, "categoria": "Accesorios" },
+    { "id": 14, "nombre": "Micrófono USB", "precio": 55, "ventas": 22, "categoria": "Accesorios" },
+    { "id": 15, "nombre": "Auriculares Gamer", "precio": 70, "ventas": 33, "categoria": "Accesorios" },
+    { "id": 16, "nombre": "Impresora Láser", "precio": 130, "ventas": 8, "categoria": "Oficina" },
+    { "id": 17, "nombre": "Router Wi-Fi 6", "precio": 110, "ventas": 16, "categoria": "Redes" },
+    { "id": 18, "nombre": "Switch de Red", "precio": 40, "ventas": 20, "categoria": "Redes" },
+    { "id": 19, "nombre": "Cable HDMI 2.1", "precio": 12, "ventas": 60, "categoria": "Cables" },
+    { "id": 20, "nombre": "Soporte Monitor", "precio": 25, "ventas": 45, "categoria": "Accesorios" }
+]

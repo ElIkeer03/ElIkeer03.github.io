@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🕷️ Tienda Spider-Verse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="PruebaGPT.css" />
+</head>
+<body>
+    <div id="loader" role="alert" aria-busy="true" aria-label="Cargando el Spider-Verso">
+        <div class="logo-glitch" aria-hidden="true">🕷️</div>
+        <p class="texto-cargando">Cargando el Spider-Verso...</p>
+    </div>
+
+    <div class="container" style="display: none;" role="main">
+        <h1 tabindex="0">🕸️ Tienda del Spider-Verso</h1>
+
+        <label for="busqueda" class="sr-only">Buscar producto</label>
+        <input type="text" id="busqueda" placeholder="🔍 Busca en el multiverso..." aria-label="Buscar productos" />
+
+        <label for="dimensionSelect" class="sr-only">Seleccionar dimensión</label>
+        <select id="dimensionSelect" aria-label="Filtrar por categoría o dimensión">
+            <option value="">🌌 Todas las Dimensiones</option>
+            <option value="Tecnología">💻 Tecnología</option>
+            <option value="Accesorios">🎧 Accesorios</option>
+            <option value="Pantallas">🖥️ Pantallas</option>
+            <option value="Almacenamiento">📦 Almacenamiento</option>
+            <option value="Componentes">🧩 Componentes</option>
+            <option value="Oficina">🖨️ Oficina</option>
+            <option value="Redes">🌐 Redes</option>
+            <option value="Cables">🔌 Cables</option>
+        </select>
+
+        <table role="table" aria-label="Lista de productos del multiverso">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio (€)</th>
+                    <th scope="col">Ventas</th>
+                    <th scope="col">Categoría</th>
+                </tr>
+            </thead>
+            <tbody id="productos">
+                <tr><td colspan="5">🕷️ Cargando productos del multiverso...</td></tr>
+            </tbody>              
+        </table>
+
+        <nav id="paginacion" aria-label="Navegación de páginas"></nav>
+    </div>
+
+    <script src="PruebaGPT.js" defer></script>
+</body>
+</html>
