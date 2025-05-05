@@ -1,4 +1,23 @@
 {
-  "labels": ["Comida", "Transporte", "Vivienda", "Ocio", "Salud", "Educación", "Tecnología", "Ropa", "Ahorro", "Entretenimiento", "Viajes", "Servicios", "Mascotas", "Hogar", "Impuestos"],
-  "data": [120, 90, 200, 150, 80, 110, 130, 95, 60, 140, 100, 85, 70, 160, 50]
+  "labels": ["Comida", "Transporte", "Vivienda", "Ocio", "Salud", "Educación", "Tecnología", "Ropa", "Ahorro", "Entretenimiento"],
+  "datasets": [
+    {
+      "label": "Persona A",
+      "data": [120, 90, 200, 150, 80, 110, 130, 95, 60, 140],
+      "backgroundColor": "rgba(255, 99, 132, 0.2)",
+      "borderColor": "rgba(255, 99, 132, 1)"
+    },
+    {
+      "label": "Persona B",
+      "data": [100, 70, 180, 120, 60, 90, 150, 85, 50, 100],
+      "backgroundColor": "rgba(54, 162, 235, 0.2)",
+      "borderColor": "rgba(54, 162, 235, 1)"
+    },
+    {
+      "label": "Persona C",
+      "data": [140, 100, 160, 130, 90, 100, 120, 105, 70, 110],
+      "backgroundColor": "rgba(75, 192, 192, 0.2)",
+      "borderColor": "rgba(75, 192, 192, 1)"
+    }
+  ]
 }
