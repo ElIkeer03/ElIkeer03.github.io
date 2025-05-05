@@ -2,62 +2,156 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Gráfico con Chart.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráficos con JSON</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      font-family: sans-serif;
-    }
-
-    canvas {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 10px;
-    }
+    body { font-family: sans-serif; }
+    canvas { width: 100%; max-width: 600px; margin: 20px auto; }
   </style>
 </head>
 <body>
 
-  <h2>Ventas Mensuales</h2>
-  <canvas id="grafico"></canvas>
+  <h2>Gráfico de Series Temporales (Línea)</h2>
+  <canvas id="lineChart"></canvas>
+
+  <h2>Gráfico de Porcentajes (Pastel)</h2>
+  <canvas id="pieChart"></canvas>
+
+  <h2>Gráfico de Barras</h2>
+  <canvas id="barChart"></canvas>
+
+  <h2>Gráfico de Radar</h2>
+  <canvas id="radarChart"></canvas>
+
+  <h2>Gráfico de Dispersión (Scatter)</h2>
+  <canvas id="scatterChart"></canvas>
 
   <script>
-    fetch('datos.json')
-      .then(res => res.json())
-      .then(data => {
-        const ctx = document.getElementById('grafico').getContext('2d');
+    // Función para cargar los datos desde un archivo JSON
+    async function loadData(file) {
+      const response = await fetch(file);
+      const data = await response.json();
+      return data;
+    }
 
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: data.labels,
-            datasets: [{
-              label: 'Ventas',
-              data: data.valores,
-              backgroundColor: 'rgba(54, 162, 235, 0.6)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
+    // Gráfico de Series Temporales (Línea)
+    async function createLineChart() {
+      const data = await loadData('data/lineChartData.json');
+      const ctx = document.getElementById('lineChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: 'Ventas',
+            data: data.data,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            fill: false,
+            tension: 0.1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true }
           }
-        });
-      })
-      .catch(error => {
-        console.error('Error al cargar datos:', error);
+        }
       });
+    }
+
+    // Gráfico de Porcentajes (Pastel)
+    async function createPieChart() {
+      const data = await loadData('data/pieChartData.json');
+      const ctx = document.getElementById('pieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: data.labels,
+          datasets: [{
+            data: data.data,
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+            hoverBackgroundColor: ['#ff4d6d', '#4d94ff', '#ffcc33']
+          }]
+        },
+        options: { responsive: true }
+      });
+    }
+
+    // Gráfico de Barras
+    async function createBarChart() {
+      const data = await loadData('data/barChartData.json');
+      const ctx = document.getElementById('barChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: 'Ventas',
+            data: data.data,
+            backgroundColor: ['#42a5f5', '#66bb6a', '#ff7043', '#ba68c8'],
+            borderColor: ['#1e88e5', '#43a047', '#d32f2f', '#8e24aa'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    }
+
+    // Gráfico de Radar
+    async function createRadarChart() {
+      const data = await loadData('data/radarChartData.json');
+      const ctx = document.getElementById('radarChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: 'Gastos Mensuales',
+            data: data.data,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: { responsive: true }
+      });
+    }
+
+    // Gráfico de Dispersión (Scatter)
+    async function createScatterChart() {
+      const data = await loadData('data/scatterChartData.json');
+      const ctx = document.getElementById('scatterChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          datasets: [{
+            label: 'Relación X-Y',
+            data: data.data,
+            backgroundColor: 'rgba(75, 192, 192, 1)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { x: { type: 'linear', position: 'bottom' } }
+        }
+      });
+    }
+
+    // Llamar a todas las funciones de los gráficos
+    window.onload = function() {
+      createLineChart();
+      createPieChart();
+      createBarChart();
+      createRadarChart();
+      createScatterChart();
+    }
   </script>
 
 </body>
 </html>
-
