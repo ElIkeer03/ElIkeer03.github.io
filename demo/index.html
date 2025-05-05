@@ -37,7 +37,7 @@
 
     // Gráfico de Series Temporales (Línea)
     async function createLineChart() {
-      const data = await loadData('data/lineChartData.json');
+      const data = await loadData('data/lineChartData.json'); // Ruta correcta
       const ctx = document.getElementById('lineChart').getContext('2d');
       new Chart(ctx, {
         type: 'line',
@@ -62,7 +62,7 @@
 
     // Gráfico de Porcentajes (Pastel)
     async function createPieChart() {
-      const data = await loadData('data/pieChartData.json');
+      const data = await loadData('data/pieChartData.json'); // Ruta correcta
       const ctx = document.getElementById('pieChart').getContext('2d');
       new Chart(ctx, {
         type: 'pie',
@@ -80,7 +80,7 @@
 
     // Gráfico de Barras
     async function createBarChart() {
-      const data = await loadData('data/barChartData.json');
+      const data = await loadData('data/barChartData.json'); // Ruta correcta
       const ctx = document.getElementById('barChart').getContext('2d');
       new Chart(ctx, {
         type: 'bar',
@@ -103,7 +103,7 @@
 
     // Gráfico de Radar
     async function createRadarChart() {
-      const data = await loadData('data/radarChartData.json');
+const data = await loadData('data/radarChartData.json'); // Ruta correcta
       const ctx = document.getElementById('radarChart').getContext('2d');
       new Chart(ctx, {
         type: 'radar',
@@ -123,7 +123,7 @@
 
     // Gráfico de Dispersión (Scatter)
     async function createScatterChart() {
-      const data = await loadData('data/scatterChartData.json');
+const data = await loadData('data/scatterChartData.json'); // Ruta correcta
       const ctx = document.getElementById('scatterChart').getContext('2d');
       new Chart(ctx, {
         type: 'scatter',
