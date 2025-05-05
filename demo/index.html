@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfico con Chart.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      font-family: sans-serif;
+    }
+
+    canvas {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ventas Mensuales</h2>
+  <canvas id="grafico"></canvas>
+
+  <script>
+    fetch('datos.json')
+      .then(res => res.json())
+      .then(data => {
+        const ctx = document.getElementById('grafico').getContext('2d');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Ventas',
+              data: data.valores,
+              backgroundColor: 'rgba(54, 162, 235, 0.6)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error al cargar datos:', error);
+      });
+  </script>
+
+</body>
+</html>
 
