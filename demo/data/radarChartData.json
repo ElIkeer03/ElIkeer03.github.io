@@ -1,4 +1,20 @@
-{
-    "labels": ["Comida", "Transporte", "Vivienda", "Ocio", "Salud"],
-    "data": [120, 90, 200, 150, 80]
-}  
+async function createRadarChart() {
+  const data = await loadData('data/radarChartData.json');
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: 'Gastos Mensuales',
+        data: data.data,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
