@@ -8,8 +8,20 @@
   <style>
     body { font-family: sans-serif; }
     canvas { width: 100%; max-width: 600px; margin: 20px auto; }
-    .video-container {
-      text-align: center;
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center;     /* Centra verticalmente */
+      background-color: #f5f5f5;
+    }
+
+    video {
+      max-width: 90%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -155,10 +167,9 @@ const data = await loadData('data/scatterChartData.json'); // Ruta correcta
       createScatterChart();
     }
   </script>
-  <div class="video-container">
-<video width="640" height="360" controls>
-  <source src="https://ElIkeer03.github.io/demo/video/video.mp4" type="video/mp4">
-  Tu navegador no soporta la reproducción de video.
-</video>
+ <video controls>
+    <source src="video/video.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
 </body>
 </html>
