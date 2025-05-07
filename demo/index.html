@@ -3,45 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gráficos con JSON</title>
+  <title>Dashboard de Visualización de Datos</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body { 
-        width: 80%;
-        font-family: sans-serif; 
-         
-         }
-      .video-container {
-      width: 100%;
-      text-align: center;
-      padding: 2rem 0;
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-bg: #f5f7fa;
+      --dark-bg: #34495e;
+      --text-color: #333;
+      --light-text: #f5f7fa;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --border-radius: 10px;
     }
-
-    .video-container video {
-      display: inline-block;
-      max-width: 90%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-style: italic;
+      opacity: 0.8;
+    }
+    
+    section {
+      margin-bottom: 40px;
+    }
+    
+    .chart-container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+    }
+    
+    .chart-container:hover {
+      transform: translateY(-5px);
+    }
+    
+    h2 {
+      color: var(--secondary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    h2 i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 400px;
+    }
+    
+    .media-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .video-container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    
+    .video-container h2 {
+      text-align: left;
+    }
+    
+    .video-container video,
+    .youtube-container iframe {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    
+    .youtube-container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    
+    .youtube-container h2 {
+      text-align: left;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      border-radius: var(--border-radius);
+    }
+    
+    /* Media queries para responsividad */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      header {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .chart-container,
+      .video-container,
+      .youtube-container {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Dashboard de Visualización de Datos</h1>
+    <p class="subtitle">Análisis interactivo de estadísticas y tendencias</p>
+  </header>
 
-  <h2>Gráfico de Series Temporales (Línea)</h2>
-  <canvas id="lineChart"></canvas>
+  <section class="charts-section">
+    <div class="chart-container">
+      <h2><i class="fas fa-chart-line"></i> Series Temporales</h2>
+      <canvas id="lineChart"></canvas>
+    </div>
 
-  <h2>Gráfico de Porcentajes (Pastel)</h2>
-  <canvas id="pieChart"></canvas>
+    <div class="chart-container">
+      <h2><i class="fas fa-chart-pie"></i> Distribución de Porcentajes</h2>
+      <canvas id="pieChart"></canvas>
+    </div>
 
-  <h2>Gráfico de Barras</h2>
-  <canvas id="barChart"></canvas>
+    <div class="chart-container">
+      <h2><i class="fas fa-chart-bar"></i> Comparativa por Categorías</h2>
+      <canvas id="barChart"></canvas>
+    </div>
 
-  <h2>Gráfico de Radar</h2>
-  <canvas id="radarChart"></canvas>
+    <div class="chart-container">
+      <h2><i class="fas fa-spider"></i> Análisis Multidimensional</h2>
+      <canvas id="radarChart"></canvas>
+    </div>
 
-  <h2>Gráfico de Dispersión (Scatter)</h2>
-  <canvas id="scatterChart"></canvas>
+    <div class="chart-container">
+      <h2><i class="fas fa-dot-circle"></i> Correlación de Variables</h2>
+      <canvas id="scatterChart"></canvas>
+    </div>
+  </section>
+
+  <section class="media-section">
+    <div class="video-container">
+      <h2><i class="fas fa-video"></i> Video Explicativo</h2>
+      <video controls>
+        <source src="video/video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+    
+    <div class="youtube-container">
+      <h2><i class="fab fa-youtube"></i> Tutorial de YouTube</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ApXoWvfEYVU?si=3unybdq702LnkDG_" 
+              title="YouTube video player" frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dashboard de Visualización | Todos los derechos reservados</p>
+  </footer>
 
   <script>
     // Función para cargar los datos desde un archivo JSON
@@ -53,7 +225,7 @@
 
     // Gráfico de Series Temporales (Línea)
     async function createLineChart() {
-      const data = await loadData('data/lineChartData.json'); // Ruta correcta
+      const data = await loadData('data/lineChartData.json');
       const ctx = document.getElementById('lineChart').getContext('2d');
       new Chart(ctx, {
         type: 'line',
@@ -62,15 +234,40 @@
           datasets: [{
             label: 'Ventas',
             data: data.data,
-            borderColor: 'rgba(75, 192, 192, 1)',
-            fill: false,
-            tension: 0.1
+            borderColor: '#3498db',
+            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#3498db',
+            pointBorderColor: '#fff',
+            pointRadius: 5,
+            pointHoverRadius: 7
           }]
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Evolución de Ventas'
+            }
+          },
           scales: {
-            y: { beginAtZero: true }
+            y: { 
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            }
           }
         }
       });
@@ -78,7 +275,7 @@
 
     // Gráfico de Porcentajes (Pastel)
     async function createPieChart() {
-      const data = await loadData('data/pieChartData.json'); // Ruta correcta
+      const data = await loadData('data/pieChartData.json');
       const ctx = document.getElementById('pieChart').getContext('2d');
       new Chart(ctx, {
         type: 'pie',
@@ -86,17 +283,36 @@
           labels: data.labels,
           datasets: [{
             data: data.data,
-            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
-            hoverBackgroundColor: ['#ff4d6d', '#4d94ff', '#ffcc33']
+            backgroundColor: [
+              'rgba(52, 152, 219, 0.8)',  // Azul
+              'rgba(46, 204, 113, 0.8)',  // Verde
+              'rgba(231, 76, 60, 0.8)',   // Rojo
+              'rgba(241, 196, 15, 0.8)',  // Amarillo
+              'rgba(155, 89, 182, 0.8)'   // Púrpura
+            ],
+            borderColor: '#fff',
+            borderWidth: 2
           }]
         },
-        options: { responsive: true }
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'right'
+            },
+            title: {
+              display: true,
+              text: 'Distribución por Categoría'
+            }
+          }
+        }
       });
     }
 
     // Gráfico de Barras
     async function createBarChart() {
-      const data = await loadData('data/barChartData.json'); // Ruta correcta
+      const data = await loadData('data/barChartData.json');
       const ctx = document.getElementById('barChart').getContext('2d');
       new Chart(ctx, {
         type: 'bar',
@@ -105,21 +321,53 @@
           datasets: [{
             label: 'Ventas',
             data: data.data,
-            backgroundColor: ['#42a5f5', '#66bb6a', '#ff7043', '#ba68c8'],
-            borderColor: ['#1e88e5', '#43a047', '#d32f2f', '#8e24aa'],
+            backgroundColor: [
+              'rgba(52, 152, 219, 0.7)',
+              'rgba(46, 204, 113, 0.7)',
+              'rgba(231, 76, 60, 0.7)',
+              'rgba(241, 196, 15, 0.7)'
+            ],
+            borderColor: [
+              'rgba(52, 152, 219, 1)',
+              'rgba(46, 204, 113, 1)',
+              'rgba(231, 76, 60, 1)',
+              'rgba(241, 196, 15, 1)'
+            ],
             borderWidth: 1
           }]
         },
         options: {
           responsive: true,
-          scales: { y: { beginAtZero: true } }
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Ventas por Región'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              }
+            }
+          }
         }
       });
     }
 
     // Gráfico de Radar
     async function createRadarChart() {
-const data = await loadData('data/radarChartData.json'); // Ruta correcta
+      const data = await loadData('data/radarChartData.json');
       const ctx = document.getElementById('radarChart').getContext('2d');
       new Chart(ctx, {
         type: 'radar',
@@ -128,18 +376,50 @@ const data = await loadData('data/radarChartData.json'); // Ruta correcta
           datasets: [{
             label: 'Gastos Mensuales',
             data: data.data,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 2
+            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+            borderColor: 'rgba(52, 152, 219, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
           }]
         },
-        options: { responsive: true }
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Análisis de Categorías'
+            }
+          },
+          scales: {
+            r: {
+              angleLines: {
+                display: true,
+                color: 'rgba(0, 0, 0, 0.1)'
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.1)'
+              },
+              pointLabels: {
+                font: {
+                  size: 12
+                }
+              }
+            }
+          }
+        }
       });
     }
 
     // Gráfico de Dispersión (Scatter)
     async function createScatterChart() {
-const data = await loadData('data/scatterChartData.json'); // Ruta correcta
+      const data = await loadData('data/scatterChartData.json');
       const ctx = document.getElementById('scatterChart').getContext('2d');
       new Chart(ctx, {
         type: 'scatter',
@@ -147,14 +427,47 @@ const data = await loadData('data/scatterChartData.json'); // Ruta correcta
           datasets: [{
             label: 'Relación X-Y',
             data: data.data,
-            backgroundColor: 'rgba(75, 192, 192, 1)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
+            backgroundColor: 'rgba(52, 152, 219, 0.6)',
+            borderColor: 'rgba(52, 152, 219, 1)',
+            borderWidth: 1,
+            pointRadius: 6,
+            pointHoverRadius: 8
           }]
         },
         options: {
           responsive: true,
-          scales: { x: { type: 'linear', position: 'bottom' } }
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Correlación de Variables'
+            }
+          },
+          scales: {
+            x: {
+              type: 'linear',
+              position: 'bottom',
+              title: {
+                display: true,
+                text: 'Variable X'
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Variable Y'
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            }
+          }
         }
       });
     }
@@ -168,12 +481,5 @@ const data = await loadData('data/scatterChartData.json'); // Ruta correcta
       createScatterChart();
     }
   </script>
- <div class="video-container">
-    <video controls>
-      <source src="video/video.mp4" type="video/mp4">
-      Tu navegador no soporta la reproducción de video.
-    </video>
-  </div>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/ApXoWvfEYVU?si=3unybdq702LnkDG_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </body>
 </html>
