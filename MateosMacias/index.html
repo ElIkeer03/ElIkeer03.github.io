@@ -601,15 +601,14 @@
 
 <script>
   let currentSlide = 0;
-
   function moveCarousel(direction) {
     const carousel = document.getElementById("videoCarousel");
     const totalSlides = carousel.children.length;
     currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    carousel.style.transform = translateX(-${currentSlide * 100}%);
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
   }
 </script>
-                 
+               
                 </section>
                 
                 <section class="section">
