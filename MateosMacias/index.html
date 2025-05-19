@@ -482,25 +482,32 @@
 </noscript>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="logo.jpg" alt="Mateos Macías Carpintería" class="logo-img">
-                    <div class="brand-text">
-                        <div class="brand-name">Mateos Macías</div>
-                        <div class="brand-tagline">CARPINTERÍA</div>
-                    </div>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Mateos Macías Carpintería" class="logo-img">
+                <div class="brand-text">
+                    <div class="brand-name">Mateos Macías</div>
+                    <div class="brand-tagline">CARPINTERÍA</div>
                 </div>
             </div>
+            <!-- Agregar navegación principal -->
+            <nav aria-label="Navegación principal">
+                <ul class="main-nav">
+                    <li><a href="#nuestro-trabajo">Nuestro Trabajo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </nav>
         </div>
-    </header>
-    
+    </div>
+</header>
     <div class="container">
         <main>
             <div class="left-column">
-                <section class="section">
-                    <h2>Nuestro Trabajo</h2>
+               <section class="section" id="nuestro-trabajo">
+    <h2>Nuestro Trabajo</h2>
                     <p>En Carpintería Artesanal nos dedicamos a crear piezas de madera de alta calidad con técnicas tradicionales combinadas con diseños modernos. Cada proyecto recibe atención personalizada y cuidado en los detalles.</p>
                     
                     <h3>Servicios que ofrecemos:</h3>
@@ -612,61 +619,48 @@
                  
                 </section>
                 
-                <section class="section">
-                    <h2>Contacto</h2>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nombre completo*</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo electrónico*</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Servicio de interés</label>
-                            <select id="service" name="service">
-                                <option value="">Seleccione una opción</option>
-                                <option value="muebles">Muebles a medida</option>
-                                <option value="puertas">Puertas y ventanas</option>
-                                <option value="restauracion">Restauración</option>
-                                <option value="decoracion">Elementos decorativos</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje*</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
-                    </form>
-                    
-                    <div class="whatsapp-contact">
-                        <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <h3>Contáctanos por WhatsApp</h3>
-                            <p>Respuesta rápida para presupuestos y consultas</p>
-                            <a href="https://wa.me/+34653822237" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Enviar mensaje
-                            </a>
-                        </div>
-                    </div>
-                </section>
+              <form class="contact-form" id="contact-form">
+    <div class="form-group">
+        <label for="name" id="name-label">Nombre completo*</label>
+        <input type="text" id="name" name="name" required aria-required="true" aria-labelledby="name-label" aria-describedby="name-error">
+        <div id="name-error" class="error-message" role="alert"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email" id="email-label">Correo electrónico*</label>
+        <input type="email" id="email" name="email" required aria-required="true" aria-labelledby="email-label" aria-describedby="email-error">
+        <div id="email-error" class="error-message" role="alert"></div>
+    </div>
+    
+    <div class="form-group">
+        <label for="phone" id="phone-label">Teléfono</label>
+        <input type="tel" id="phone" name="phone" aria-labelledby="phone-label">
+    </div>
+    
+    <div class="form-group">
+        <label for="service" id="service-label">Servicio de interés</label>
+        <select id="service" name="service" aria-labelledby="service-label">
+            <option value="">Seleccione una opción</option>
+            <option value="muebles">Muebles a medida</option>
+            <option value="puertas">Puertas y ventanas</option>
+            <option value="restauracion">Restauración</option>
+            <option value="decoracion">Elementos decorativos</option>
+            <option value="otro">Otro</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="message" id="message-label">Mensaje*</label>
+        <textarea id="message" name="message" required aria-required="true" aria-labelledby="message-label" aria-describedby="message-error"></textarea>
+        <div id="message-error" class="error-message" role="alert"></div>
+    </div>
+    
+    <button type="submit" aria-label="Enviar formulario de contacto"><i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar mensaje</button>
+</form>
             </div>
             
             <div class="right-column">
-                <section class="section">
+<section class="section" id="faq">
                     <h2>Preguntas Frecuentes</h2>
                     
                     <div class="faq-item">
